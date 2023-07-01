@@ -5,8 +5,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
 app.use(express.json());
+app.use(
+  cors({
+    origin: ["https://hire-sync-server.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 // MONGODB CODE
 
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
